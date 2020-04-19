@@ -1,0 +1,8 @@
+C:\Users\andre\Desktop\Arkanoid-Game-Csharp\Arkanoid-Game-Csharp\bin\Debug\Arkanoid-Game-Csharp.exe.config
+C:\Users\andre\Desktop\Arkanoid-Game-Csharp\Arkanoid-Game-Csharp\bin\Debug\Arkanoid-Game-Csharp.exe
+C:\Users\andre\Desktop\Arkanoid-Game-Csharp\Arkanoid-Game-Csharp\bin\Debug\Arkanoid-Game-Csharp.pdb
+C:\Users\andre\Desktop\Arkanoid-Game-Csharp\Arkanoid-Game-Csharp\obj\Debug\Arkanoid-Game-Csharp.csprojAssemblyReference.cache
+C:\Users\andre\Desktop\Arkanoid-Game-Csharp\Arkanoid-Game-Csharp\obj\Debug\Arkanoid_Game_Csharp.Properties.Resources.resources
+C:\Users\andre\Desktop\Arkanoid-Game-Csharp\Arkanoid-Game-Csharp\obj\Debug\Arkanoid-Game-Csharp.csproj.GenerateResource.cache
+C:\Users\andre\Desktop\Arkanoid-Game-Csharp\Arkanoid-Game-Csharp\obj\Debug\Arkanoid-Game-Csharp.exe
+C:\Users\andre\Desktop\Arkanoid-Game-Csharp\Arkanoid-Game-Csharp\obj\Debug\Arkanoid-Game-Csharp.pdb
