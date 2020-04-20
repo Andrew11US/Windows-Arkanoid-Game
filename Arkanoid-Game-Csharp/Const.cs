@@ -24,5 +24,6 @@ namespace Arkanoid_Game_Csharp
         public static readonly int BRICK_WIDTH = 50;
         public static readonly int BRICK_HEIGHT = 30;
         public static readonly int GAME_SPEED = 6;
+        public static readonly int BALL_SPEED = 3;
     }
 }

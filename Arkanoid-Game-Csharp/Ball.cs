@@ -12,6 +12,7 @@ namespace Arkanoid_Game_Csharp
         public int xDirection;
         public int yDirection;
         public int size;
+        public int speed = Const.BALL_SPEED;
         Random random = new Random();
         public Ball() : base(Const.WINDOW_WIDTH / 2, Const.WINDOW_HEIGHT / 2, Const.BALL_SIZE, Const.BALL_SIZE)
         {

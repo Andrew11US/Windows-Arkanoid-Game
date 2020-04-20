@@ -16,19 +16,11 @@ namespace Arkanoid_Game_Csharp
         private Ball ball;
         private Paddle paddle;
         private List<Brick> bricks = new List<Brick>();
-        //private Image image;
-        //private Thread thread;
-        // Pauses the game, changing the ball.speed to 0, (recoverable action)
-        //private boolean isPaused = true;
-        // Stops the game breaking while loop, not recoverable!
-        //private boolean isRunning = true;
         private int bricksCount = 0;
         public int level = 1;
         public int lives = 3;
         public int levelScore = 0;
         public int score = 0;
-
-        public int x = 10, y = 10;
         public GameForm()
         {
             InitializeComponent();
@@ -69,9 +61,7 @@ namespace Arkanoid_Game_Csharp
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            x += 3;
             Invalidate();
-
         }
 
         private void GameForm_Paint(object sender, PaintEventArgs e)
@@ -82,10 +72,16 @@ namespace Arkanoid_Game_Csharp
             e.Graphics.DrawString("Score: " + score, new Font("Calibri", 16), Brushes.White, Const.WINDOW_WIDTH / 2 - 30, 10);
             e.Graphics.DrawString("Lives: " + lives, new Font("Calibri", 16), Brushes.White, Const.WINDOW_WIDTH - 80, 10);
 
-
-            //e.Graphics.DrawString("")
-            e.Graphics.FillEllipse(Brushes.Red, ball.ToRectangle());
-            e.Graphics.FillRectangle(Brushes.Red, paddle.ToRectangle());
+            
+            e.Graphics.FillRectangle(Brushes.White, paddle.ToRectangle());
+            if (timer.Enabled)
+            {
+                e.Graphics.FillEllipse(Brushes.Aqua, ball.ToRectangle());
+            } 
+            else
+            {
+                e.Graphics.FillEllipse(Brushes.White, ball.ToRectangle());
+            }
             //if (ball.xDirection == 0 || ball.yDirection == 0)
             //{
 
@@ -143,7 +139,8 @@ namespace Arkanoid_Game_Csharp
             bricks.ForEach(brick => {
                 if (!brick.destroyed)
                 {
-                    e.Graphics.FillRectangle(Brushes.BlueViolet, brick.ToRectangle());
+                    e.Graphics.FillRectangle(Brushes.White, brick.ToRectangle());
+                    e.Graphics.DrawRectangle(Pens.DarkGray, brick.ToRectangle());
                 }
 
                 if (!brick.destroyed && ball.ToRectangle().IntersectsWith(brick.ToRectangle()))
@@ -199,8 +196,8 @@ namespace Arkanoid_Game_Csharp
         private void timer_Tick(object sender, EventArgs e)
         {
             // MARK: Constantly updates ball position in certain direction and speed
-            ball.x += ball.xDirection;
-            ball.y += ball.yDirection;
+            ball.x += ball.xDirection * ball.speed;
+            ball.y += ball.yDirection * ball.speed;
             Invalidate();
         }
 
@@ -210,6 +207,7 @@ namespace Arkanoid_Game_Csharp
             if (e.KeyData == Keys.Space)
             {
                 timer.Enabled = !timer.Enabled;
+                Invalidate();
             }
             // MARK: Paddle left direction
             if (e.KeyData == Keys.A && paddle.x > 0)
