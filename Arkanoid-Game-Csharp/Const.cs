@@ -6,7 +6,23 @@ using System.Threading.Tasks;
 
 namespace Arkanoid_Game_Csharp
 {
-    class Const
+    /**
+    * SSOT principle - Single Source of Truth
+    * Dedicated class to store essential constants:
+    * Window size; Ball, Paddle, Brick sizes; move speed, etc.
+    */
+    public class Const
     {
+        // MARK: App constants
+        public static readonly int WINDOW_WIDTH = 510;
+        public static readonly int WINDOW_HEIGHT = 510;
+
+        // MARK: Game constants
+        public static readonly int BALL_SIZE = 20;
+        public static readonly int PADDLE_WIDTH = 120;
+        public static readonly int PADDLE_HEIGHT = 10;
+        public static readonly int BRICK_WIDTH = 50;
+        public static readonly int BRICK_HEIGHT = 30;
+        public static readonly int GAME_SPEED = 6;
     }
 }
