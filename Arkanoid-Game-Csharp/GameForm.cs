@@ -23,7 +23,7 @@ namespace Arkanoid_Game_Csharp
         // Stops the game breaking while loop, not recoverable!
         //private boolean isRunning = true;
         private int bricksCount = 0;
-        public int level = 10;
+        public int level = 1;
         public int lives = 3;
         public int levelScore = 0;
         public int score = 0;
@@ -66,30 +66,44 @@ namespace Arkanoid_Game_Csharp
             }
         }
 
-        // MARK: corresponds to Java : updateUI 
-        private void Form1_Paint(object sender, PaintEventArgs e)
-        {
-            List<Rectangle> br = new List<Rectangle>();
-
-            bricks.ForEach(brick => br.Add(new Rectangle(new Point(brick.x, brick.y), new Size(brick.width, brick.height))));
-            Rectangle r1 = new Rectangle(new Point(x, y), new Size(50, 50));
-            Rectangle r2 = new Rectangle(new Point(100, 10), new Size(50, 50));
-            if (r1.IntersectsWith(r2))
-            {
-                Console.WriteLine("Intersection");
-                r2.Y = 200;
-            }
-            //e.Graphics.FillRectangle(new SolidBrush(Color.Green), r);
-            e.Graphics.FillEllipse(Brushes.Black, r1);
-            e.Graphics.FillRectangle(Brushes.Black, r2);
-            br.ForEach(b => e.Graphics.FillRectangle(Brushes.Blue, b));
-        }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
             x += 3;
             Invalidate();
 
+        }
+
+        private void GameForm_Paint(object sender, PaintEventArgs e)
+        {
+            // MARK: Constantly updates ball position in certain direction and speed
+            ball.x += ball.xDirection * ball.speed;
+            ball.y += ball.yDirection * ball.speed;
+
+            e.Graphics.FillEllipse(Brushes.Red, ball.ToRectangle());
+            bricks.ForEach(brick =>
+            {
+                if (!brick.destroyed)
+                {
+                    e.Graphics.FillRectangle(Brushes.BlueViolet, brick.ToRectangle());
+                }
+
+                if (brick.ToRectangle().IntersectsWith(ball.ToRectangle()))
+                {
+                    brick.destroyed = true;
+                }
+
+            });
+            //Rectangle r1 = new Rectangle(new Point(x, y), new Size(50, 50));
+            //Rectangle r2 = new Rectangle(new Point(100, 10), new Size(50, 50));
+            //if (r1.IntersectsWith(r2))
+            //{
+            //    Console.WriteLine("Intersection");
+            //    r2.Y = 200;
+            //}
+            //e.Graphics.FillRectangle(new SolidBrush(Color.Green), r);
+            //e.Graphics.FillEllipse(Brushes.Black, r1);
+            //e.Graphics.FillRectangle(Brushes.Black, r2);
         }
 
         private void button1_Click(object sender, EventArgs e)
