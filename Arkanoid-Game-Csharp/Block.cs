@@ -8,10 +8,10 @@ namespace Arkanoid_Game_Csharp
 {
     public abstract class Block
     {
-        private int x;
-        private int y;
-        private int width;
-        private int height;
+        public int x;
+        public int y;
+        public int width;
+        public int height;
         public Block(int x, int y, int width, int height)
         {
             this.width = width;

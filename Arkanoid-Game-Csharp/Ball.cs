@@ -14,7 +14,7 @@ namespace Arkanoid_Game_Csharp
         public int speed = 1;
         public int size;
         Random random = new Random();
-        public Ball(int x, int y, int width, int height) : base(Const.WINDOW_WIDTH / 2, Const.WINDOW_HEIGHT / 2, Const.BALL_SIZE, Const.BALL_SIZE)
+        public Ball() : base(Const.WINDOW_WIDTH / 2, Const.WINDOW_HEIGHT / 2, Const.BALL_SIZE, Const.BALL_SIZE)
         {
             xDirection = 1;
             yDirection = -1;
@@ -28,21 +28,6 @@ namespace Arkanoid_Game_Csharp
 
             x = random.Next((rightBound - leftBound)) + leftBound;
             y = random.Next((bottomBound - topBound)) + topBound;
-        }
-
-        public void Paint(Graphics g)
-        {
-            if (speed == 0)
-            {
-                //g.setColor(Color.Gray);
-                //g.FillEllipse()
-            }
-            else
-            {
-                //g.setColor(Color.GREEN);
-            }
-
-            //g.fillOval(x, y, Const.BALL_SIZE, Const.BALL_SIZE);
         }
 
     }
