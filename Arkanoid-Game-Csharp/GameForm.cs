@@ -26,7 +26,6 @@ namespace Arkanoid_Game_Csharp
             InitializeComponent();
             ClientSize = new Size(Const.WINDOW_WIDTH, Const.WINDOW_HEIGHT);
             resetScene(true);
-
         }
 
         private void resetScene(bool isNewLevel)
@@ -66,28 +65,7 @@ namespace Arkanoid_Game_Csharp
 
         private void GameForm_Paint(object sender, PaintEventArgs e)
         {
-            e.Graphics.FillRectangle(Brushes.Black, 0, 0, Const.WINDOW_WIDTH, Const.WINDOW_HEIGHT);
-            string levelOutput = string.Format("Level {0}: {1}", level, levelScore);
-            e.Graphics.DrawString(levelOutput, new Font("Calibri", 16), Brushes.White, 10, 10);
-            e.Graphics.DrawString("Score: " + score, new Font("Calibri", 16), Brushes.White, Const.WINDOW_WIDTH / 2 - 30, 10);
-            e.Graphics.DrawString("Lives: " + lives, new Font("Calibri", 16), Brushes.White, Const.WINDOW_WIDTH - 80, 10);
-
-            
-            e.Graphics.FillRectangle(Brushes.White, paddle.ToRectangle());
-            if (timer.Enabled)
-            {
-                e.Graphics.FillEllipse(Brushes.Aqua, ball.ToRectangle());
-            } 
-            else
-            {
-                e.Graphics.FillEllipse(Brushes.White, ball.ToRectangle());
-            }
-            //if (ball.xDirection == 0 || ball.yDirection == 0)
-            //{
-
-            //    ball.xDirection = -1;
-            //    ball.yDirection = -1;
-            //}
+            setUI(e);
 
             // MARK: Ball hits left or right edge
             if (ball.x < 0 || ball.x + ball.width > Const.WINDOW_WIDTH)
@@ -190,6 +168,19 @@ namespace Arkanoid_Game_Csharp
      
                 resetScene(true);
             }
+        }
+
+        private void setUI(PaintEventArgs e)
+        {
+            string levelOutput = string.Format("Level {0}: {1}", level, levelScore);
+            e.Graphics.FillRectangle(Brushes.Black, 0, 0, Const.WINDOW_WIDTH, Const.WINDOW_HEIGHT);
+            e.Graphics.DrawString(levelOutput, new Font("Calibri", 16), Brushes.White, 10, 10);
+            e.Graphics.DrawString("Score: " + score, new Font("Calibri", 16), Brushes.White, Const.WINDOW_WIDTH / 2 - 30, 10);
+            e.Graphics.DrawString("Lives: " + lives, new Font("Calibri", 16), Brushes.White, Const.WINDOW_WIDTH - 80, 10);
+
+            e.Graphics.FillRectangle(Brushes.White, paddle.ToRectangle());
+            if (timer.Enabled) e.Graphics.FillEllipse(Brushes.Aqua, ball.ToRectangle());
+            else e.Graphics.FillEllipse(Brushes.White, ball.ToRectangle());
         }
 
         // MARK: Timer tick method repeats every n ms
