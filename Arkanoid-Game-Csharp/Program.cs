@@ -16,7 +16,7 @@ namespace Arkanoid_Game_Csharp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new GameForm());
+            Application.Run(new MenuForm());
         }
     }
 }
