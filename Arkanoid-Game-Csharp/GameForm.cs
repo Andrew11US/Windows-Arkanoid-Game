@@ -34,7 +34,6 @@ namespace Arkanoid_Game_Csharp
             InitializeComponent();
             ClientSize = new Size(Const.WINDOW_WIDTH, Const.WINDOW_HEIGHT);
             resetScene(true);
-            KeyPreview = true;
 
         }
 
@@ -77,6 +76,14 @@ namespace Arkanoid_Game_Csharp
 
         private void GameForm_Paint(object sender, PaintEventArgs e)
         {
+            e.Graphics.FillRectangle(Brushes.Black, 0, 0, Const.WINDOW_WIDTH, Const.WINDOW_HEIGHT);
+            string levelOutput = string.Format("Level {0}: {1}", level, levelScore);
+            e.Graphics.DrawString(levelOutput, new Font("Calibri", 16), Brushes.White, 10, 10);
+            e.Graphics.DrawString("Score: " + score, new Font("Calibri", 16), Brushes.White, Const.WINDOW_WIDTH / 2 - 30, 10);
+            e.Graphics.DrawString("Lives: " + lives, new Font("Calibri", 16), Brushes.White, Const.WINDOW_WIDTH - 80, 10);
+
+
+            //e.Graphics.DrawString("")
             e.Graphics.FillEllipse(Brushes.Red, ball.ToRectangle());
             e.Graphics.FillRectangle(Brushes.Red, paddle.ToRectangle());
             //if (ball.xDirection == 0 || ball.yDirection == 0)
@@ -188,11 +195,12 @@ namespace Arkanoid_Game_Csharp
             }
         }
 
+        // MARK: Timer tick method repeats every n ms
         private void timer_Tick(object sender, EventArgs e)
         {
             // MARK: Constantly updates ball position in certain direction and speed
-            ball.x += ball.xDirection * ball.speed;
-            ball.y += ball.yDirection * ball.speed;
+            ball.x += ball.xDirection;
+            ball.y += ball.yDirection;
             Invalidate();
         }
 

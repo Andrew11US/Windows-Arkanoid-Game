@@ -14,8 +14,8 @@ namespace Arkanoid_Game_Csharp
     public class Const
     {
         // MARK: App constants
-        public static readonly int WINDOW_WIDTH = 510;
-        public static readonly int WINDOW_HEIGHT = 510;
+        public static readonly int WINDOW_WIDTH = 530;
+        public static readonly int WINDOW_HEIGHT = 530;
 
         // MARK: Game constants
         public static readonly int BALL_SIZE = 20;
