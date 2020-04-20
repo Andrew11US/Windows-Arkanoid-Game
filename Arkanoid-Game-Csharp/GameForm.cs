@@ -33,7 +33,7 @@ namespace Arkanoid_Game_Csharp
         {
             InitializeComponent();
             resetScene(true);
-
+            KeyPreview = true;
 
         }
 
@@ -81,6 +81,7 @@ namespace Arkanoid_Game_Csharp
             ball.y += ball.yDirection * ball.speed;
 
             e.Graphics.FillEllipse(Brushes.Red, ball.ToRectangle());
+            e.Graphics.FillRectangle(Brushes.Red, paddle.ToRectangle());
             bricks.ForEach(brick =>
             {
                 if (!brick.destroyed)
@@ -106,9 +107,42 @@ namespace Arkanoid_Game_Csharp
             //e.Graphics.FillRectangle(Brushes.Black, r2);
         }
 
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            Invalidate();
+        }
+
+        private void GameForm_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //if (e. == Keys.Right)
+            //{
+
+            //}
+        }
+
+        private void GameForm_KeyUp(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void GameForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.D)
+            {
+                paddle.x += 20;
+                Invalidate();
+            }
+            else if (e.KeyData == Keys.A)
+            {
+                paddle.x -= 20;
+                Invalidate();
+            }
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
-            timer1.Enabled = !timer1.Enabled;
+            timer.Enabled = !timer.Enabled;
+            //Invalidate();
         }
     }
         
