@@ -37,14 +37,21 @@ namespace Arkanoid_Game_Csharp
             List<string> scores = new List<string>();
 
             // MARK: Reading scores from scores.txt using StreamReader
-            using (StreamReader streamReader = new StreamReader("scores.txt"))
+            try
             {
-                string line;
-                while((line = streamReader.ReadLine()) != null && line.Trim() != String.Empty)
+                using (StreamReader streamReader = new StreamReader("scores.txt"))
                 {
-                    scores.Add(line);
+                    string line;
+                    while ((line = streamReader.ReadLine()) != null && line.Trim() != String.Empty)
+                    {
+                        scores.Add(line);
+                    }
                 }
+            } catch (FileNotFoundException e)
+            {
+                scores.Add("Nothing to show");
             }
+            
 
             // MARK: Using custom comparer to sort scores descending by String score part
             scores.Sort(new ScoresComparer().Compare);

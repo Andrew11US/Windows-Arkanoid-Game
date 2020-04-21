@@ -22,7 +22,7 @@ namespace Arkanoid_Game_Csharp
         private void SetUI()
         {
             ClientSize = new Size(Const.WINDOW_WIDTH, Const.WINDOW_HEIGHT);
-            nameLbl.Text = "Arkanoid v1.0";
+            nameLbl.Text = "Arkanoid v1.0.1";
             flowLayoutPanel1.Size = new Size(Const.WINDOW_WIDTH - 15, Const.WINDOW_HEIGHT);
             nameLbl.Size = new Size(Const.WINDOW_WIDTH, Const.WINDOW_HEIGHT / 4);
             newGameBtn.Size = new Size(Const.WINDOW_WIDTH, Const.WINDOW_HEIGHT / 4);
