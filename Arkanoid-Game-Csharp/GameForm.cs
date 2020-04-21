@@ -67,7 +67,7 @@ namespace Arkanoid_Game_Csharp
 
         private void GameForm_Paint(object sender, PaintEventArgs e)
         {
-            setUI(e);
+            SetUI(e);
 
             // MARK: Ball hits left or right edge
             if (ball.x < 0 || ball.x + ball.width > Const.WINDOW_WIDTH)
@@ -87,12 +87,10 @@ namespace Arkanoid_Game_Csharp
                 if (ball.x + ball.size < paddle.x + 10)
                 {
                     ball.xDirection *= -1;
-                    //System.out.println("Left side intersection");
                 }
                 else if (ball.x > paddle.x + paddle.width - 10)
                 {
                     ball.xDirection *= -1;
-                    //System.out.println("Right side intersection");
                 }
 
                 ball.yDirection *= -1;
@@ -101,7 +99,7 @@ namespace Arkanoid_Game_Csharp
             // MARK: Ball crosses a bottom edge
             if (ball.y > Const.WINDOW_WIDTH)
             {
-                lives -= 3;
+                lives -= 1;
                 if (lives > 0)
                 {
                     resetScene(false);
@@ -127,22 +125,18 @@ namespace Arkanoid_Game_Csharp
                     if (ball.x + ball.size < brick.x + 5)
                     {
                         ball.xDirection *= -1;
-                        //System.out.println("Left side hit");
                     }
                     else if (ball.x > brick.x + brick.width - 5)
                     {
                         ball.xDirection *= -1;
-                        //System.out.println("Right side hit");
                     }
                     else if (ball.y + ball.size < brick.y + 5)
                     {
                         ball.yDirection *= -1;
-                        
                     }
                     else if (ball.y > brick.y + brick.height - 5)
                     {
                         ball.yDirection *= -1;
-                        
                     }
                     else
                     {
@@ -157,7 +151,6 @@ namespace Arkanoid_Game_Csharp
 
             if (levelScore == bricksCount)
             {
-       
                 level += 1;
                 levelScore = 0;
 
@@ -170,7 +163,7 @@ namespace Arkanoid_Game_Csharp
             }
         }
 
-        private void setUI(PaintEventArgs e)
+        private void SetUI(PaintEventArgs e)
         {
             string levelOutput = string.Format("Level {0}: {1}", level, levelScore);
             e.Graphics.FillRectangle(Brushes.Black, 0, 0, Const.WINDOW_WIDTH, Const.WINDOW_HEIGHT);

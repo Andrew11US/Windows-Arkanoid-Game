@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace Arkanoid_Game_Csharp
 {
+    // MARK: Base class Block for all graphic objects to be painted
     public abstract class Block
     {
         public int x;

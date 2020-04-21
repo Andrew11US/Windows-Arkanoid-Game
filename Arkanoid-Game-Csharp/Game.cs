@@ -9,6 +9,7 @@ using System.Windows.Forms;
 
 namespace Arkanoid_Game_Csharp
 {
+    // MARK: Game class contains game handling functions and window control variables and methods
     class Game
     {
         public static MenuForm menuForm;
@@ -55,6 +56,7 @@ namespace Arkanoid_Game_Csharp
         {
             System.Drawing.Size size = new System.Drawing.Size(200, 120);
             Form inputBox = new Form();
+            inputBox.StartPosition = FormStartPosition.CenterScreen;
 
             inputBox.FormBorderStyle = FormBorderStyle.FixedDialog;
             inputBox.ClientSize = size;

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Arkanoid_Game_Csharp
 {
+    // MARK: Paddle class inherited from Block
     public class Paddle : Block
     {
 

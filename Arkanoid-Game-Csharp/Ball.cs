@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace Arkanoid_Game_Csharp
 {
+    // MARK: Ball class inherited from Block
     public class Ball : Block
     {
         public int xDirection;

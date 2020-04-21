@@ -53,3 +53,8 @@
 1 dd
 6 aaaaaaaaaaaaaaaaaa
 1 ddadada
+0 cdcdcd
+1 dsd
+102 Boss
+19 Player X
+3 ss
