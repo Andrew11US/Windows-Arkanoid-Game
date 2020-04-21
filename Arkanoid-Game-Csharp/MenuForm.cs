@@ -38,8 +38,6 @@ namespace Arkanoid_Game_Csharp
             GameForm gameForm = new GameForm();
             gameForm.Show();
             Visible = false;
-            Game.endGame(12);
-            
         }
 
         private void scoreboardBtn_Click(object sender, EventArgs e)

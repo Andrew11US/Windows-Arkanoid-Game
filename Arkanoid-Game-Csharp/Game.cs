@@ -10,71 +10,83 @@ namespace Arkanoid_Game_Csharp
 {
     class Game
     {
+        MenuForm menuForm;
+        GameForm gameForm;
+        ScoreboardForm scoreboardForm;
+
         // MARK: Gets score and writes it to scores.txt tile, creates file if it doesn't exist
-        public static void endGame(int score)
+        public static void EndGame(int score)
         {
-            string str = "GAME OVER!\nYour Score: " + score + "\n Type your name: ";
-            string name = "";
             string scoreStr;
+            string name = "";
+            ShowInputDialog(ref name, score);
 
             if (name.Trim().Length > 0)
             {
-                scoreStr = Environment.NewLine + score + " " + name;
+                scoreStr = score + " " + name;
             }
             else
             {
                 scoreStr = score + " " + "Player X";
             }
 
-//            using(StreamWriter writetext = new StreamWriter("write.txt"))
-//{
-//                writetext.WriteLine(scoreStr);
-//            }
-
             using (StreamWriter streamWriter = File.AppendText("scores.txt"))
             {
                 streamWriter.WriteLine(scoreStr);
             }
-            string exeFolder = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
+
+            //string exeFolder = Path.GetDirectoryName(Application.ExecutablePath);
             //using (StreamReader readtext = new StreamReader("write.txt"))
             //{
             //    string readText = readtext.ReadLine();
             //}
-
-            //FileStream fs = new FileStream(txtSourcePath.Text, FileMode.Open, FileAccess.Read);
-            //using (StreamReader sr = new StreamReader(fs))
-            //{
-            //    using (StreamWriter sw = new StreamWriter(Destination))
-            //    {
-            //        sw.writeline("Your text");
-            //    }
-            //}
         }
-            
-                
-            
 
-            //try
-            //{
-            //    Files.write(Paths.get("scores.txt"), scoreStr.getBytes(), StandardOpenOption.APPEND);
-            //}
-            //catch (IOException e)
-            //{
-            //    try
-            //    {
-            //        FileOutputStream fileOutputStream = new FileOutputStream(new File("scores.txt"));
-            //        fileOutputStream.write(scoreStr.getBytes());
-            //        fileOutputStream.close();
-            //    }
-            //    catch (IOException ex)
-            //    {
-            //        ex.getStackTrace();
-            //    }
-            //}
+        public static DialogResult ShowInputDialog(ref string input, int score)
+        {
+            System.Drawing.Size size = new System.Drawing.Size(200, 120);
+            Form inputBox = new Form();
 
-            //initMenu();
-        
+            inputBox.FormBorderStyle = FormBorderStyle.FixedDialog;
+            inputBox.ClientSize = size;
+            inputBox.Text = "Arkanoid";
 
-        
+            Label label1 = new Label();
+            label1.Size = new System.Drawing.Size(size.Width - 10, 50);
+            label1.Location = new System.Drawing.Point(5, 5);
+            label1.Text = "Game Over!" + Environment.NewLine + "Your score is: " + score + Environment.NewLine + "Enter your name below";
+            label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            inputBox.Controls.Add(label1);
+
+            TextBox textBox = new TextBox();
+            textBox.Size = new System.Drawing.Size(size.Width - 10, 25);
+            textBox.Location = new System.Drawing.Point(5, 55);
+            textBox.Text = input;
+            inputBox.Controls.Add(textBox);
+
+            Button okButton = new Button();
+            okButton.DialogResult = DialogResult.OK;
+            okButton.Name = "okButton";
+            okButton.Size = new System.Drawing.Size(75, 25);
+            okButton.Text = "&OK";
+            okButton.Location = new System.Drawing.Point(20, 80);
+            inputBox.Controls.Add(okButton);
+
+            Button cancelButton = new Button();
+            cancelButton.DialogResult = DialogResult.Cancel;
+            cancelButton.Name = "cancelButton";
+            cancelButton.Size = new System.Drawing.Size(75, 25);
+            cancelButton.Text = "&Cancel";
+            cancelButton.Location = new System.Drawing.Point(size.Width - 95, 80);
+            inputBox.Controls.Add(cancelButton);
+
+            inputBox.AcceptButton = okButton;
+            inputBox.CancelButton = cancelButton;
+
+            DialogResult result = inputBox.ShowDialog();
+            input = textBox.Text;
+            return result;
+        }
+
     }
 }

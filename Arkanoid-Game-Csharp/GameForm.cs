@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -100,17 +101,15 @@ namespace Arkanoid_Game_Csharp
             // MARK: Ball crosses bottom edge
             if (ball.y > Const.WINDOW_WIDTH)
             {
-                lives -= 1;
+                lives -= 3;
                 if (lives != 0)
                 {
                     resetScene(false);
                 }
                 else
                 {
-                    
-                    
-                    //  call gameOver method
-                    
+                    timer.Enabled = false;
+                    Game.EndGame(score);
                 }
             }
 
@@ -223,22 +222,23 @@ namespace Arkanoid_Game_Csharp
 
         private void GameForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (e.CloseReason == CloseReason.UserClosing)
-            {
-                DialogResult result = MessageBox.Show("Do you really want to exit?", "Arkanoid", MessageBoxButtons.YesNo);
-                if (result == DialogResult.Yes)
-                {
-                    Environment.Exit(0);
-                }
-                else
-                {
-                    e.Cancel = true;
-                }
-            }
-            else
-            {
-                e.Cancel = true;
-            }
+            Environment.Exit(0);
+            //if (e.CloseReason == CloseReason.UserClosing)
+            //{
+            //    DialogResult result = MessageBox.Show("Do you really want to exit?", "Arkanoid", MessageBoxButtons.YesNo);
+            //    if (result == DialogResult.Yes)
+            //    {
+            //        Environment.Exit(0);
+            //    }
+            //    else
+            //    {
+            //        e.Cancel = true;
+            //    }
+            //}
+            //else
+            //{
+            //    e.Cancel = true;
+            //}
         }
     }
         
