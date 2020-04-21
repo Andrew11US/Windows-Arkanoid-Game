@@ -55,6 +55,7 @@
     <Compile Include="Block.cs" />
     <Compile Include="Brick.cs" />
     <Compile Include="Const.cs" />
+    <Compile Include="Game.cs" />
     <Compile Include="GameForm.cs">
       <SubType>Form</SubType>
     </Compile>

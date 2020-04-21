@@ -53,12 +53,14 @@
             // 
             this.scoreboardTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.scoreboardTextBox.Font = new System.Drawing.Font("Calibri", 15.85714F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.scoreboardTextBox.Location = new System.Drawing.Point(3, 95);
             this.scoreboardTextBox.Multiline = true;
             this.scoreboardTextBox.Name = "scoreboardTextBox";
             this.scoreboardTextBox.ReadOnly = true;
             this.scoreboardTextBox.Size = new System.Drawing.Size(758, 327);
             this.scoreboardTextBox.TabIndex = 1;
+            this.scoreboardTextBox.Text = "99 Player X";
             this.scoreboardTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // closeBtn

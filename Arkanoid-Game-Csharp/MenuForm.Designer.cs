@@ -75,7 +75,7 @@
             this.exitBtn.BackColor = System.Drawing.Color.Transparent;
             this.exitBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.exitBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.85714F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.exitBtn.ForeColor = System.Drawing.Color.Transparent;
+            this.exitBtn.ForeColor = System.Drawing.Color.OrangeRed;
             this.exitBtn.Location = new System.Drawing.Point(3, 313);
             this.exitBtn.Name = "exitBtn";
             this.exitBtn.Size = new System.Drawing.Size(643, 86);
@@ -109,7 +109,7 @@
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 12);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(671, 591);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(671, 595);
             this.flowLayoutPanel1.TabIndex = 4;
             // 
             // MenuForm
