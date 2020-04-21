@@ -53,8 +53,11 @@
             // 
             this.scoreboardTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.scoreboardTextBox.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.scoreboardTextBox.BackColor = System.Drawing.Color.Black;
+            this.scoreboardTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.scoreboardTextBox.Cursor = System.Windows.Forms.Cursors.Default;
             this.scoreboardTextBox.Font = new System.Drawing.Font("Calibri", 15.85714F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.scoreboardTextBox.ForeColor = System.Drawing.Color.White;
             this.scoreboardTextBox.Location = new System.Drawing.Point(3, 95);
             this.scoreboardTextBox.Multiline = true;
             this.scoreboardTextBox.Name = "scoreboardTextBox";
@@ -97,10 +100,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(972, 648);
+            this.ClientSize = new System.Drawing.Size(903, 640);
             this.Controls.Add(this.flowLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "ScoreboardForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ScoreboardForm";
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();

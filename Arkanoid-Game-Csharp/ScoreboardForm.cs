@@ -54,13 +54,12 @@ namespace Arkanoid_Game_Csharp
             {
                 scoreboardTextBox.AppendText(score+Environment.NewLine);
             }
-
-            
         }
 
         private void closeBtn_Click(object sender, EventArgs e)
         {
             Close();
+            Game.menuForm.Show();
         }
 
         private void closeBtn_MouseEnter(object sender, EventArgs e)

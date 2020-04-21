@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -10,39 +11,47 @@ namespace Arkanoid_Game_Csharp
 {
     class Game
     {
-        MenuForm menuForm;
-        GameForm gameForm;
-        ScoreboardForm scoreboardForm;
+        public static MenuForm menuForm;
+        private static GameForm gameForm;
+        private static ScoreboardForm scoreboardForm;
 
+        // MARK: Starts game directly from Game class
+        public static void Start()
+        {
+            gameForm = new GameForm();
+            gameForm.Show();
+            menuForm.Hide();
+        }
+
+        // MARK: Opens Scoreboard directly from Game class
+        public static void ShowScores()
+        {
+            scoreboardForm = new ScoreboardForm();
+            scoreboardForm.Show();
+            menuForm.Hide();
+        }
         // MARK: Gets score and writes it to scores.txt tile, creates file if it doesn't exist
-        public static void EndGame(int score)
+        public static void End(int score)
         {
             string scoreStr;
             string name = "";
             ShowInputDialog(ref name, score);
 
-            if (name.Trim().Length > 0)
-            {
-                scoreStr = score + " " + name;
-            }
-            else
-            {
-                scoreStr = score + " " + "Player X";
-            }
+            if (name.Trim().Length > 0) scoreStr = score + " " + name;
+            else scoreStr = score + " " + "Player X";
 
             using (StreamWriter streamWriter = File.AppendText("scores.txt"))
             {
                 streamWriter.WriteLine(scoreStr);
             }
 
-            //string exeFolder = Path.GetDirectoryName(Application.ExecutablePath);
-            //using (StreamReader readtext = new StreamReader("write.txt"))
-            //{
-            //    string readText = readtext.ReadLine();
-            //}
+            menuForm.Show();
+            gameForm.Hide();
+            gameForm = null;
         }
 
-        public static DialogResult ShowInputDialog(ref string input, int score)
+        // MARK: Custom DialogBox with a input field to provide name 
+        private static DialogResult ShowInputDialog(ref string input, int score)
         {
             System.Drawing.Size size = new System.Drawing.Size(200, 120);
             Form inputBox = new Form();

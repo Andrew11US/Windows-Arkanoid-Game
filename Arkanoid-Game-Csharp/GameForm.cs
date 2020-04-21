@@ -98,18 +98,18 @@ namespace Arkanoid_Game_Csharp
                 ball.yDirection *= -1;
             }
 
-            // MARK: Ball crosses bottom edge
+            // MARK: Ball crosses a bottom edge
             if (ball.y > Const.WINDOW_WIDTH)
             {
                 lives -= 3;
-                if (lives != 0)
+                if (lives > 0)
                 {
                     resetScene(false);
                 }
                 else
                 {
                     timer.Enabled = false;
-                    Game.EndGame(score);
+                    Game.End(score);
                 }
             }
 
@@ -220,25 +220,9 @@ namespace Arkanoid_Game_Csharp
             }
         }
 
-        private void GameForm_FormClosing(object sender, FormClosingEventArgs e)
+        private void GameForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Environment.Exit(0);
-            //if (e.CloseReason == CloseReason.UserClosing)
-            //{
-            //    DialogResult result = MessageBox.Show("Do you really want to exit?", "Arkanoid", MessageBoxButtons.YesNo);
-            //    if (result == DialogResult.Yes)
-            //    {
-            //        Environment.Exit(0);
-            //    }
-            //    else
-            //    {
-            //        e.Cancel = true;
-            //    }
-            //}
-            //else
-            //{
-            //    e.Cancel = true;
-            //}
         }
     }
         

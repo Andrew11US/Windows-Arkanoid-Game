@@ -16,8 +16,9 @@ namespace Arkanoid_Game_Csharp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MenuForm());
-            //Game game = new Game();
+            //MARK: Assigning initial MenuForm to static Game object to better handle windows 
+            Game.menuForm = new MenuForm();
+            Application.Run(Game.menuForm);
         }
     }
 }

@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -15,13 +16,13 @@ namespace Arkanoid_Game_Csharp
         public MenuForm()
         {
             InitializeComponent();
-            setUI();
+            SetUI();
         }
 
-        private void setUI()
+        private void SetUI()
         {
             ClientSize = new Size(Const.WINDOW_WIDTH, Const.WINDOW_HEIGHT);
-            nameLbl.Text = "Arkanoid v0.9";
+            nameLbl.Text = "Arkanoid v0.99";
             flowLayoutPanel1.Size = new Size(Const.WINDOW_WIDTH - 15, Const.WINDOW_HEIGHT);
             nameLbl.Size = new Size(Const.WINDOW_WIDTH, Const.WINDOW_HEIGHT / 4);
             newGameBtn.Size = new Size(Const.WINDOW_WIDTH, Const.WINDOW_HEIGHT / 4);
@@ -31,24 +32,23 @@ namespace Arkanoid_Game_Csharp
             newGameBtn.FlatAppearance.BorderSize = 0;
             scoreboardBtn.FlatAppearance.BorderSize = 0;
             exitBtn.FlatAppearance.BorderSize = 0;
+
+            newGameBtn.Focus();
         }
 
         private void newGameBtn_Click(object sender, EventArgs e)
         {
-            GameForm gameForm = new GameForm();
-            gameForm.Show();
-            Visible = false;
+            Game.Start();
         }
 
         private void scoreboardBtn_Click(object sender, EventArgs e)
         {
-            ScoreboardForm scoreboardForm = new ScoreboardForm();
-            scoreboardForm.Show();
+            Game.ShowScores();
         }
 
         private void exitBtn_Click(object sender, EventArgs e)
         {
-            Close();
+            Environment.Exit(0);
         }
 
         // MARK: Mouse hover stub
@@ -80,6 +80,11 @@ namespace Arkanoid_Game_Csharp
         private void exitBtn_MouseLeave(object sender, EventArgs e)
         {
             exitBtn.BackColor = Color.Transparent;
+        }
+
+        private void MenuForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Environment.Exit(0);
         }
     }
 }
