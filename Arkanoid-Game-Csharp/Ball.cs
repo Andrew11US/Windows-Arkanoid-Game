@@ -21,15 +21,15 @@ namespace Arkanoid_Game_Csharp
             yDirection = -1;
             size = width;
 
-            // MARK: generating random ball position
+            // MARK: generating random ball position on ball creation
             int rightBound = (Const.WINDOW_WIDTH / 2) + Const.PADDLE_WIDTH;
             int leftBound = (Const.WINDOW_WIDTH / 2) - Const.PADDLE_WIDTH;
             int topBound = Const.WINDOW_HEIGHT - 200;
             int bottomBound = Const.WINDOW_HEIGHT - 80;
 
+            // Assigning random x and y to properties inherited from Block
             x = random.Next((rightBound - leftBound)) + leftBound;
             y = random.Next((bottomBound - topBound)) + topBound;
         }
-
     }
 }

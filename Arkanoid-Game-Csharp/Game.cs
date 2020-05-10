@@ -9,14 +9,14 @@ using System.Windows.Forms;
 
 namespace Arkanoid_Game_Csharp
 {
-    // MARK: Game class contains game handling functions and window control variables and methods
+    // MARK: Game class contains game driving functions and window control variables and methods
     class Game
     {
         public static MenuForm menuForm;
         private static GameForm gameForm;
         private static ScoreboardForm scoreboardForm;
 
-        // MARK: Starts game directly from Game class
+        // MARK: Game form init
         public static void Start()
         {
             gameForm = new GameForm();
@@ -24,14 +24,14 @@ namespace Arkanoid_Game_Csharp
             menuForm.Hide();
         }
 
-        // MARK: Opens Scoreboard directly from Game class
+        // MARK: Opens Scoreboard
         public static void ShowScores()
         {
             scoreboardForm = new ScoreboardForm();
             scoreboardForm.Show();
             menuForm.Hide();
         }
-        // MARK: Gets score and writes it to scores.txt tile, creates file if it doesn't exist
+        // MARK: Gets score and writes it to scores.txt tile, creates file if doesn't exist
         public static void End(int score)
         {
             string scoreStr;
@@ -40,7 +40,7 @@ namespace Arkanoid_Game_Csharp
 
             if (name.Trim().Length > 0) scoreStr = score + " " + name;
             else scoreStr = score + " " + "Player X";
-
+            // Saving scores using streamWriter, file is created if doesn't exist
             using (StreamWriter streamWriter = File.AppendText("scores.txt"))
             {
                 streamWriter.WriteLine(scoreStr);

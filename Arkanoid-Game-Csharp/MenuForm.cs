@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Arkanoid_Game_Csharp
@@ -19,10 +12,11 @@ namespace Arkanoid_Game_Csharp
             SetUI();
         }
 
+        // UI setup method
         private void SetUI()
         {
             ClientSize = new Size(Const.WINDOW_WIDTH, Const.WINDOW_HEIGHT);
-            nameLbl.Text = "Arkanoid v1.0.1";
+            nameLbl.Text = "Arkanoid v1.0.2";
             flowLayoutPanel1.Size = new Size(Const.WINDOW_WIDTH - 15, Const.WINDOW_HEIGHT);
             nameLbl.Size = new Size(Const.WINDOW_WIDTH, Const.WINDOW_HEIGHT / 4);
             newGameBtn.Size = new Size(Const.WINDOW_WIDTH, Const.WINDOW_HEIGHT / 4);
@@ -38,11 +32,13 @@ namespace Arkanoid_Game_Csharp
 
         private void newGameBtn_Click(object sender, EventArgs e)
         {
+            // Init new game
             Game.Start();
         }
 
         private void scoreboardBtn_Click(object sender, EventArgs e)
         {
+            // Show scores
             Game.ShowScores();
         }
 

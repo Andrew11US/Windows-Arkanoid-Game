@@ -15,9 +15,11 @@ namespace Arkanoid_Game_Csharp
 {
     public partial class GameForm : Form
     {
+        // Game objects
         private Ball ball;
         private Paddle paddle;
         private List<Brick> bricks = new List<Brick>();
+        // Game metrics
         private int bricksCount = 0;
         public int level = 1;
         public int lives = 3;
@@ -30,6 +32,7 @@ namespace Arkanoid_Game_Csharp
             resetScene(true);
         }
 
+        // Resets scene depending on isNewLevel denerates new set of bricks or returns one that already exists
         private void resetScene(bool isNewLevel)
         {
             ball = new Ball();
@@ -59,12 +62,7 @@ namespace Arkanoid_Game_Csharp
             }
         }
 
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            Invalidate();
-        }
-
+        // Paint method
         private void GameForm_Paint(object sender, PaintEventArgs e)
         {
             SetUI(e);
@@ -82,7 +80,7 @@ namespace Arkanoid_Game_Csharp
             }
 
             // MARK: Ball hits a paddle on top of the platform or on one of the sides
-            if (ball.ToRectangle().IntersectsWith(paddle.ToRectangle()))
+            if (ball.ToRectangle.IntersectsWith(paddle.ToRectangle))
             {
                 if (ball.x + ball.size < paddle.x + 10)
                 {
@@ -115,11 +113,11 @@ namespace Arkanoid_Game_Csharp
             bricks.ForEach(brick => {
                 if (!brick.destroyed)
                 {
-                    e.Graphics.FillRectangle(Brushes.White, brick.ToRectangle());
-                    e.Graphics.DrawRectangle(Pens.DarkGray, brick.ToRectangle());
+                    e.Graphics.FillRectangle(Brushes.White, brick.ToRectangle);
+                    e.Graphics.DrawRectangle(Pens.DarkGray, brick.ToRectangle);
                 }
-
-                if (!brick.destroyed && ball.ToRectangle().IntersectsWith(brick.ToRectangle()))
+                // Handling all 4 sides of collisions ball with brick
+                if (!brick.destroyed && ball.ToRectangle.IntersectsWith(brick.ToRectangle))
                 {
                     brick.destroyed = true;
                     if (ball.x + ball.size < brick.x + 5)
@@ -148,7 +146,7 @@ namespace Arkanoid_Game_Csharp
                   
                 }
             });
-
+            // Level passed handling
             if (levelScore == bricksCount)
             {
                 level += 1;
@@ -163,6 +161,7 @@ namespace Arkanoid_Game_Csharp
             }
         }
 
+        // UI setup of additional info labels
         private void SetUI(PaintEventArgs e)
         {
             string levelOutput = string.Format("Level {0}: {1}", level, levelScore);
@@ -171,9 +170,9 @@ namespace Arkanoid_Game_Csharp
             e.Graphics.DrawString("Score: " + score, new Font("Calibri", 16), Brushes.White, Const.WINDOW_WIDTH / 2 - 30, 10);
             e.Graphics.DrawString("Lives: " + lives, new Font("Calibri", 16), Brushes.White, Const.WINDOW_WIDTH - 80, 10);
 
-            e.Graphics.FillRectangle(Brushes.White, paddle.ToRectangle());
-            if (timer.Enabled) e.Graphics.FillEllipse(Brushes.Aqua, ball.ToRectangle());
-            else e.Graphics.FillEllipse(Brushes.White, ball.ToRectangle());
+            e.Graphics.FillRectangle(Brushes.White, paddle.ToRectangle);
+            if (timer.Enabled) e.Graphics.FillEllipse(Brushes.Aqua, ball.ToRectangle);
+            else e.Graphics.FillEllipse(Brushes.White, ball.ToRectangle);
         }
 
         // MARK: Timer tick method repeats every n ms
@@ -182,6 +181,7 @@ namespace Arkanoid_Game_Csharp
             // MARK: Constantly updates ball position in certain direction and speed
             ball.x += ball.xDirection * ball.speed;
             ball.y += ball.yDirection * ball.speed;
+            // Cause UI to be repainted
             Invalidate();
         }
 
@@ -212,12 +212,9 @@ namespace Arkanoid_Game_Csharp
                 }
             }
         }
-
         private void GameForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Environment.Exit(0);
         }
     }
-        
-    
 }

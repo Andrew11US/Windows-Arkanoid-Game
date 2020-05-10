@@ -21,6 +21,7 @@ namespace Arkanoid_Game_Csharp
             ShowScores();
         }
 
+        // UI setup
         private void SetUI()
         {
             ClientSize = new Size(Const.WINDOW_WIDTH, Const.WINDOW_HEIGHT);
@@ -32,16 +33,19 @@ namespace Arkanoid_Game_Csharp
             closeBtn.FlatAppearance.BorderSize = 0;
         }
 
+        // Show Scores method
         private void ShowScores()
         {
+            // List of scores
             List<string> scores = new List<string>();
 
-            // MARK: Reading scores from scores.txt using StreamReader
+            // Getting scores from scores.txt using StreamReader class
             try
             {
                 using (StreamReader streamReader = new StreamReader("scores.txt"))
                 {
                     string line;
+                    // while EOF and line is not empty adding to scores list
                     while ((line = streamReader.ReadLine()) != null && line.Trim() != String.Empty)
                     {
                         scores.Add(line);
@@ -52,8 +56,7 @@ namespace Arkanoid_Game_Csharp
                 scores.Add("Nothing to show");
             }
             
-
-            // MARK: Using custom comparer to sort scores descending by String score part
+            // Using custom comparer to sort scores descending extracting score from String line
             scores.Sort(new ScoresComparer().Compare);
             scores.Reverse();
 
@@ -65,6 +68,7 @@ namespace Arkanoid_Game_Csharp
 
         private void closeBtn_Click(object sender, EventArgs e)
         {
+            // Falling back to menu on close
             Close();
             Game.menuForm.Show();
         }

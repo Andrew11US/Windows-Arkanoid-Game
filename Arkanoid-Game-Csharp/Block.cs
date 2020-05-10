@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Arkanoid_Game_Csharp
 {
-    // MARK: Base class Block for all graphic objects to be painted
+    // MARK: Abstract class for all graphic objects to be painted
     public abstract class Block
     {
         public int x;
@@ -23,9 +23,6 @@ namespace Arkanoid_Game_Csharp
         }
 
         // MARK: Converts object instance to Rectangle object
-        public Rectangle ToRectangle()
-        {
-            return new Rectangle(new Point(x, y), new Size(width, height));
-        }
+        public Rectangle ToRectangle => new Rectangle(new Point(x, y), new Size(width, height));
     }
 }

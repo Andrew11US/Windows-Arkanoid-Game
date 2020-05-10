@@ -11,11 +11,6 @@ namespace Arkanoid_Game_Csharp
     public class Brick : Block
     {
         public bool destroyed = false;
-
-        public Brick(int x, int y) : base(x, y, Const.BRICK_WIDTH, Const.BRICK_HEIGHT)
-        {
-
-        }
-
+        public Brick(int x, int y) : base(x, y, Const.BRICK_WIDTH, Const.BRICK_HEIGHT) { }
     }
 }
