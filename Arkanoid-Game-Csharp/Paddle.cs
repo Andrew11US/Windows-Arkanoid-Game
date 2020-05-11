@@ -9,7 +9,7 @@ namespace Arkanoid_Game_Csharp
     // MARK: Paddle class inherited from Block
     public class Paddle : Block
     {
-        // MARK: Generation Paddle x position in the middle regardless the Window_Size
+        // Generation Paddle x position in the middle regardless the Window_Size
         public Paddle() : base((Const.WINDOW_WIDTH / 2) - (Const.PADDLE_WIDTH / 2),
                                 Const.WINDOW_HEIGHT - 50,
                                 Const.PADDLE_WIDTH,

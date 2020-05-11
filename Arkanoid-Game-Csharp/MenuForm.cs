@@ -45,10 +45,11 @@ namespace Arkanoid_Game_Csharp
 
         private void exitBtn_Click(object sender, EventArgs e)
         {
+            // Close with code 0
             Environment.Exit(0);
         }
 
-        // MARK: Mouse hover stub
+        // Mouse hover stub
         private void newGameBtn_MouseEnter(object sender, EventArgs e)
         {
             newGameBtn.BackColor = Color.DarkGray;

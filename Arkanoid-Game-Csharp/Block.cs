@@ -22,7 +22,7 @@ namespace Arkanoid_Game_Csharp
             this.y = y;
         }
 
-        // MARK: Converts object instance to Rectangle object
+        // Converts object instance to Rectangle object
         public Rectangle ToRectangle => new Rectangle(new Point(x, y), new Size(width, height));
     }
 }

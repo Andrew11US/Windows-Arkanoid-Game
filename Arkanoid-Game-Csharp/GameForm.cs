@@ -62,9 +62,10 @@ namespace Arkanoid_Game_Csharp
             }
         }
 
-        // Paint method using paint arguments
+        // Form Paint method using paint arguments
         private void GameForm_Paint(object sender, PaintEventArgs e)
         {
+            // Updating metrics labels for scores and lives
             SetUI(e);
 
             // MARK: Ball hits left or right edge
@@ -161,7 +162,7 @@ namespace Arkanoid_Game_Csharp
             }
         }
 
-        // UI setup of additional info labels
+        // UI setup of metrics info labels using paint arguments and Graphics
         private void SetUI(PaintEventArgs e)
         {
             string levelOutput = string.Format("Level {0}: {1}", level, levelScore);
