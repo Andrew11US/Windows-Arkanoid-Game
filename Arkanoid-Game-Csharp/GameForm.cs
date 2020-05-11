@@ -32,7 +32,7 @@ namespace Arkanoid_Game_Csharp
             resetScene(true);
         }
 
-        // Resets scene depending on isNewLevel denerates new set of bricks or returns one that already exists
+        // Resets scene depending on isNewLevel generates new set of bricks or returns one that already exists
         private void resetScene(bool isNewLevel)
         {
             ball = new Ball();
@@ -62,7 +62,7 @@ namespace Arkanoid_Game_Csharp
             }
         }
 
-        // Paint method
+        // Paint method using paint arguments
         private void GameForm_Paint(object sender, PaintEventArgs e)
         {
             SetUI(e);
@@ -185,6 +185,7 @@ namespace Arkanoid_Game_Csharp
             Invalidate();
         }
 
+        // Key pressed method using event arguments
         private void GameForm_KeyDown(object sender, KeyEventArgs e)
         {
             // MARK: Start game or pause
@@ -212,6 +213,7 @@ namespace Arkanoid_Game_Csharp
                 }
             }
         }
+        // Form closed method -> exit with code 0 on form close
         private void GameForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Environment.Exit(0);

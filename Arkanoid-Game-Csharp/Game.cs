@@ -31,6 +31,7 @@ namespace Arkanoid_Game_Csharp
             scoreboardForm.Show();
             menuForm.Hide();
         }
+
         // MARK: Gets score and writes it to scores.txt tile, creates file if doesn't exist
         public static void End(int score)
         {
@@ -51,7 +52,7 @@ namespace Arkanoid_Game_Csharp
             gameForm = null;
         }
 
-        // MARK: Custom DialogBox with a input field to provide name 
+        // MARK: Custom DialogBox with a input field to provide name and score
         private static DialogResult ShowInputDialog(ref string input, int score)
         {
             System.Drawing.Size size = new System.Drawing.Size(200, 120);

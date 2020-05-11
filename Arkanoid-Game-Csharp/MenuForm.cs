@@ -30,6 +30,7 @@ namespace Arkanoid_Game_Csharp
             newGameBtn.Focus();
         }
 
+        // Button actions
         private void newGameBtn_Click(object sender, EventArgs e)
         {
             // Init new game
@@ -77,7 +78,7 @@ namespace Arkanoid_Game_Csharp
         {
             exitBtn.BackColor = Color.Transparent;
         }
-
+        // Form close method -> exit with code 0
         private void MenuForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Environment.Exit(0);
