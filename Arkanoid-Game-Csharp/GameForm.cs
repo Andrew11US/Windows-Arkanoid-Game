@@ -25,6 +25,8 @@ namespace Arkanoid_Game_Csharp
         public int lives = 3;
         public int levelScore = 0;
         public int score = 0;
+
+        private bool isFirstLaunch = true;
         public GameForm()
         {
             InitializeComponent();
@@ -174,6 +176,19 @@ namespace Arkanoid_Game_Csharp
             e.Graphics.FillRectangle(Brushes.White, paddle.ToRectangle);
             if (timer.Enabled) e.Graphics.FillEllipse(Brushes.Aqua, ball.ToRectangle);
             else e.Graphics.FillEllipse(Brushes.White, ball.ToRectangle);
+
+            if (!timer.Enabled)
+            {
+                if (isFirstLaunch)
+                {
+                    e.Graphics.DrawString("SPACE to Start", new Font("Calibri", 22), Brushes.White, Const.WINDOW_WIDTH / 2 - 90, Const.WINDOW_HEIGHT / 2);
+                    isFirstLaunch = false;
+                } 
+                else
+                {
+                    e.Graphics.DrawString("Paused", new Font("Calibri", 22), Brushes.White, Const.WINDOW_WIDTH / 2 - 50, Const.WINDOW_HEIGHT / 2);
+                }
+            }
         }
 
         // MARK: Timer tick method repeats every n ms
